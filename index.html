@@ -12,6 +12,8 @@
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
     <script type="text/javascript" src="components/formulaire.js"></script>
+    <script type="text/javascript" src="components/ng-table.min.js"></script>
+    <script type="text/javascript" src="components/ng-table.min.js.map"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -19,6 +21,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="components/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="components/css/ng-table.min.css"/>
 </head>
 <body ng-controller="CamController">
     <!-- NAVBAR -->
@@ -38,13 +41,13 @@
                     <li><a href="/Portofil">Portfolio</a></li>
                     <li><a href="/API_Rest/front/AutoLoc.php">AutoLoc</a></li>
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
         </div>
     </nav>
     <div class="container">
         <div class="row">
             <section class="col-sm-8 table-responsive sectiontable">
-                <table class="table table-bordered table-condensed table-hover">
+                <table class="table table-bordered table-condensed table-hover" ng-table="tableParams">
                     <thead>
                         <tr class="active trtable">
                             <td>Nom</td>
@@ -56,10 +59,11 @@
                         <tr class="trtable" ng-repeat="user in users">
                             <td>{{user.nom}}</td>
                             <td>{{user.prenom}}</td>
-                            <td></td>
+                            <td><img class="user_photo" data-ng-src="data:image/png;base64,{{user.photo}}"</td>
                         </tr>
                     </tbody>
                 </table>
+                <p><strong>Page:</strong> {{ tableParams.page() }}</p>  
             </section>
         </div>
     </div>
